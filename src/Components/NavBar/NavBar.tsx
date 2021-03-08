@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark ml-auto">
@@ -19,14 +21,22 @@ export const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto">
             <li className="navbar-item">
-              <a className="nav-link active" href="/">
+              <NavLink
+                className="nav-link"
+                to="/selectairports"
+                activeClassName="active"
+              >
                 Select Airports
-              </a>
+              </NavLink>
             </li>
             <li className="navbar-item">
-              <a className="nav-link" href="/">
+              <NavLink
+                className="nav-link"
+                to="/showweather"
+                activeClassName="active"
+              >
                 Show Weather
-              </a>
+              </NavLink>
             </li>
             <li className="navbar-item">
               <a className="nav-link" href="/">

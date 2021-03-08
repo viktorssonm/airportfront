@@ -3,8 +3,8 @@ import { AirportSearchTableRow } from "./AirportSearchTableRow";
 const SelectAirports: React.FC = () => {
   return (
     <div className="container">
-      <div className="row pt-5 pt-3" style={{ minHeight: "80vh" }}>
-        <div className="col-md border pt-3">
+      <div className="row pt-3" style={{ minHeight: "80vh" }}>
+        <div className="col-md  border py-3">
           <div className="row">
             <div className="col-8">
               <input

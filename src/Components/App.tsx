@@ -3,13 +3,22 @@ import "bootstrap/dist/js/bootstrap";
 import "./App.css";
 import { NavBar } from "./NavBar/NavBar";
 import SelectAirports from "./Pages/SelectAirports/SelectAirports";
+import ShowWeather from "./Pages/ShowWeather/ShowWeather";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <div>
+    <Router>
       <NavBar />
-      <SelectAirports />
-    </div>
+      <Switch>
+        <Route path="/selectairports">
+          <SelectAirports />
+        </Route>
+        <Route path="/showweather">
+          <ShowWeather />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
