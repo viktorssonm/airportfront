@@ -1,4 +1,5 @@
 import { AirportSearchTableRow } from "./AirportSearchTableRow";
+import { AirportLists } from "./AirportLists";
 import { searchForAirports } from "../../../store/action-creators";
 import { useSelector, TypedUseSelectorHook, useDispatch } from "react-redux";
 import { RootState } from "../../../store/index";
@@ -46,19 +47,15 @@ const SelectAirports: React.FC = () => {
           </form>
           <table className="table table-striped">
             <tbody>
-              {/* <AirportSearchTableRow Title="ESKM/MXX Mora Siljan" />
-              <AirportSearchTableRow Title="ESSA/ARN Stockholm Arlanda" />
-              <AirportSearchTableRow Title="ESKM/MXX Mora Siljan" /> */}
               {airports.map((a) => {
                 return <AirportSearchTableRow airport={a} />;
               })}
-              {/* {airports.length > 1 && (
-                <AirportSearchTableRow airport={airports[0]} />
-              )} */}
             </tbody>
           </table>
         </div>
-        <div className="col-md border pt-3">test</div>
+        <div className="col-md border py-3">
+          <AirportLists />
+        </div>
       </div>
     </div>
   );

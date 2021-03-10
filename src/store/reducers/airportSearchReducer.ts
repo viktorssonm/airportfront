@@ -1,4 +1,4 @@
-import { ActionType } from "../action-types";
+import { ActionType } from "../actions";
 import { Action } from "../actions";
 import { Airport } from "../airports/types";
 

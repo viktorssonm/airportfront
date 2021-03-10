@@ -19,6 +19,14 @@ export interface Airport {
   wikipediaLink?: string;
 }
 
+export interface AirportList {
+  id: string;
+  airports: Airport[];
+  listName: string;
+  createdAt: Date;
+  changedAt: Date;
+}
+
 export interface SearchForAirport {
   SearchTerm: String;
 }
@@ -30,4 +38,8 @@ export type AirportSearchState = {
 export type SearchForAirportAction = {
   type: String;
   airports: Airport[];
+};
+
+export type SelectAirportList = {
+  list: AirportList;
 };

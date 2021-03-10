@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import airportSearchReducer from "./airportSearchReducer";
+import airportListReducer from "./airportListsReducer";
 
-const reducers = combineReducers({
+const rootReducer = combineReducers({
   airportSearch: airportSearchReducer,
+  airportLists: airportListReducer,
 });
 
-export default reducers;
+export default rootReducer;
 
-export type RootState = ReturnType<typeof reducers>;
+export type RootState = ReturnType<typeof rootReducer>;
