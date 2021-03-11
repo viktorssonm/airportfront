@@ -25,6 +25,7 @@ const reducer = (state = initialState, action: Action): AirportListState => {
         ...state,
         allAirportLists: action.payload,
         loading: false,
+        selectedList: action.payload[0],
       };
     case ActionType.SELECT_AIRPORT_LIST:
       return { ...state, selectedList: action.payload };

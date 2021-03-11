@@ -25,7 +25,7 @@ const SelectAirports: React.FC = () => {
     <div className="container">
       <div className="row pt-3" style={{ minHeight: "80vh" }}>
         <div className="col-md  border py-3">
-          <form onSubmit={submitForm}>
+          <form onSubmit={submitForm} className="form-fluid">
             <div className="row">
               <div className="col-8">
                 <input

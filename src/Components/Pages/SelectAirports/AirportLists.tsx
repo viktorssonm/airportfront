@@ -39,16 +39,29 @@ export const AirportLists: React.FC = () => {
   };
 
   return (
-    <div>
-      <select className="form-select" onChange={handleChange}>
-        {airportLists.length > 0 &&
-          airportLists.map((airportList) => (
-            <option key={airportList.id} value={airportList.id}>
-              {airportList.listName}
-            </option>
-          ))}
-      </select>
-      <table className="table table-striped mt-3">
+    <>
+      <div className="row">
+        <div className="form-fluid">
+          <select className="form-select" onChange={handleChange}>
+            {airportLists.length > 0 &&
+              airportLists.map((airportList) => (
+                <option key={airportList.id} value={airportList.id}>
+                  {airportList.listName}
+                </option>
+              ))}
+          </select>
+        </div>
+      </div>
+      <div className="row py-3">
+        <div className="d-flex">
+          <button className="btn btn-outline-danger me-atuo">
+            Delete List
+          </button>
+          <button className="btn btn-outline-primary ms-auto">New List</button>
+        </div>
+      </div>
+
+      <table className="table table-striped">
         <tbody>
           {selectedAirportList &&
             selectedAirportList.airports.map((airport) => (
@@ -56,6 +69,6 @@ export const AirportLists: React.FC = () => {
             ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 };
