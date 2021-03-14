@@ -4,13 +4,15 @@ import { Dispatch } from "redux";
 import { Action } from "../actions";
 import { Airport, AirportList } from "../airports/types";
 
+// Action creator for search airport
 export const searchForAirports = (searchString: string) => {
   return async (dispatch: Dispatch<Action>) => {
+    // Dispatch search started action
     dispatch({
       type: ActionType.SEARCH_FOR_AIRPORTS,
-      payload: searchString,
     });
 
+    // Call API with AXIOS.
     try {
       const { data, status } = await axios.get(
         "https://localhost:5001/api/airport/search",
@@ -25,14 +27,23 @@ export const searchForAirports = (searchString: string) => {
           },
         }
       );
+      // IF ok, return airports and dispatch success
       if (status === 200) {
         dispatch({
           type: ActionType.SEARCH_FOR_AIRPORTS_SUCCESS,
           payload: data,
         });
+      } else {
+        // If not status 200, dispatch error.
+        dispatch({
+          type: ActionType.SEARCH_FOR_AIRPORTS_ERROR,
+        });
       }
     } catch (e) {
       console.log(e);
+      dispatch({
+        type: ActionType.SEARCH_FOR_AIRPORTS_ERROR,
+      });
     }
   };
 };
@@ -41,7 +52,6 @@ export const getAirportListsForUser = () => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.GET_AIRPORT_LISTS,
-      payload: "userId",
     });
 
     try {
@@ -60,9 +70,16 @@ export const getAirportListsForUser = () => {
           type: ActionType.GET_AIRPORT_LISTS_SUCCESS,
           payload: data,
         });
+      } else {
+        dispatch({
+          type: ActionType.GET_AIRPORT_LISTS_ERROR,
+        });
       }
     } catch (e) {
       console.log(e);
+      dispatch({
+        type: ActionType.GET_AIRPORT_LISTS_ERROR,
+      });
     }
   };
 };
@@ -74,6 +91,51 @@ export const selectAirportList = (airportList: AirportList) => {
   };
 };
 
+// Delete airport from list
+export const deleteAirportFromAirportList = (
+  airportList: AirportList,
+  airportToDelete: Airport
+) => {
+  return async (dispatch: Dispatch<Action>) => {
+    // Dispatch action to indicate start of action.
+    dispatch({
+      type: ActionType.DELETE_AIRPORT_FROM_AIRPORTLIST,
+    });
+
+    try {
+      const { data, status } = await axios.delete(
+        "https://localhost:5001/api/airportlists/deleteairport",
+        {
+          data: {
+            Id: airportList.id,
+            AirportIdent: airportToDelete.ident,
+          },
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTEyYmRmOS1iZmQ1LTQyNDUtOGVlZC04NmI2ZDUxMjM0N2MiLCJlbWFpbCI6Im1hZ251c0B0ZXN0LnNlIiwibmJmIjoxNjE1Mzc2MjQ1LCJleHAiOjE2MTU5ODEwNDUsImlhdCI6MTYxNTM3NjI0NX0.NB92S_uer7BTOWmedkHjQFhfBG-5Ip0AIcmGKclF1MpleyNwkiKHlGx3s3HrJ4EA7r8UVVFCW_1z-WJ1lTwNdg",
+          },
+        }
+      );
+      if (status === 200) {
+        dispatch({
+          type: ActionType.DELETE_AIRPORT_FROM_AIRPORTLIST_SUCCESS,
+          payload: data,
+        });
+      } else {
+        dispatch({
+          type: ActionType.DELETE_AIRPORT_FROM_AIRPORTLIST_ERROR,
+        });
+      }
+    } catch (e) {
+      console.log(e);
+      dispatch({
+        type: ActionType.DELETE_AIRPORT_FROM_AIRPORTLIST_ERROR,
+      });
+    }
+  };
+};
+
+// Add airport to list
 export const addAirportToAirportList = (
   airportToAdd: Airport,
   airportList: AirportList
@@ -81,11 +143,10 @@ export const addAirportToAirportList = (
   return async (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.ADD_AIRPORT_TO_AIRPORTSLIST,
-      payload: airportToAdd,
     });
 
     try {
-      const response = await axios.post(
+      const { data, status } = await axios.post(
         "https://localhost:5001/api/airportlists/addairport",
         {
           Id: airportList.id,
@@ -98,10 +159,21 @@ export const addAirportToAirportList = (
           },
         }
       );
-
-      console.log(response);
+      if (status === 200) {
+        dispatch({
+          type: ActionType.ADD_AIRPORT_TO_AIRPORTLIST_SUCCESS,
+          payload: data,
+        });
+      } else {
+        dispatch({
+          type: ActionType.ADD_AIRPORT_TO_AIRPORTLIST_ERROR,
+        });
+      }
     } catch (e) {
       console.log(e.response);
+      dispatch({
+        type: ActionType.ADD_AIRPORT_TO_AIRPORTLIST_ERROR,
+      });
     }
   };
 };

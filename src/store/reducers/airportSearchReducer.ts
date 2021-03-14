@@ -20,9 +20,11 @@ const reducer = (
 ): AirportsSearchState => {
   switch (action.type) {
     case ActionType.SEARCH_FOR_AIRPORTS:
-      return { loading: true, error: null, data: [] };
+      return { ...state, loading: true };
     case ActionType.SEARCH_FOR_AIRPORTS_SUCCESS:
-      return { loading: false, error: null, data: action.payload };
+      return { ...state, data: action.payload, loading: false };
+    case ActionType.ADD_AIRPORT_TO_AIRPORTLIST_ERROR:
+      return { ...state, loading: false };
     default:
       return state;
   }

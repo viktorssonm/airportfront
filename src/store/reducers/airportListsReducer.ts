@@ -29,6 +29,34 @@ const reducer = (state = initialState, action: Action): AirportListState => {
       };
     case ActionType.SELECT_AIRPORT_LIST:
       return { ...state, selectedList: action.payload };
+    case ActionType.ADD_AIRPORT_TO_AIRPORTSLIST:
+      return { ...state, loading: true };
+    case ActionType.ADD_AIRPORT_TO_AIRPORTLIST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        selectedList: action.payload,
+        allAirportLists: state.allAirportLists.map((airportList) => {
+          if (airportList.id === action.payload.id) {
+            return action.payload;
+          }
+          return airportList;
+        }),
+      };
+    case ActionType.DELETE_AIRPORT_FROM_AIRPORTLIST:
+      return { ...state, loading: true };
+    case ActionType.DELETE_AIRPORT_FROM_AIRPORTLIST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        selectedList: action.payload,
+        allAirportLists: state.allAirportLists.map((airportList) => {
+          if (airportList.id === action.payload.id) {
+            return action.payload;
+          }
+          return airportList;
+        }),
+      };
     default:
       return state;
   }
