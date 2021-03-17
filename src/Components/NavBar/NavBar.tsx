@@ -44,7 +44,7 @@ export const NavBar = () => {
               </a>
             </li>
           </ul>
-          <span className="navbar-text">Signed in as Magnus Viktorsson</span>
+          <span className="navbar-text">Sign In</span>
         </div>
       </div>
     </nav>
