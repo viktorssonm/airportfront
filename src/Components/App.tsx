@@ -4,9 +4,9 @@ import "./App.css";
 import { NavBar } from "./NavBar/NavBar";
 import { Provider } from "react-redux";
 import { store } from "../store";
-import SelectAirports from "./Pages/SelectAirports/SelectAirports";
 import ShowWeather from "./Pages/ShowWeather/ShowWeather";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { SelectAirportsPage } from "./Pages/SelectAirports/SelectAirportsPage";
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
         <NavBar />
         <Switch>
           <Route path="/selectairports">
-            <SelectAirports />
+            <SelectAirportsPage />
           </Route>
           <Route path="/showweather">
             <ShowWeather />

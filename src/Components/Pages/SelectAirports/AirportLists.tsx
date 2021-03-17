@@ -5,7 +5,7 @@ import {
   getAirportListsForUser,
 } from "../../../store/action-creators";
 import { useTypedSelector } from "../../../store/hooks/reducer";
-import { AirportSearchTableRow } from "./AirportSearchTableRow";
+import { AirportListTableRow } from "./AirportListTableRow";
 
 export const AirportLists: React.FC = () => {
   // Using custom typed hooks to connect to redux store
@@ -41,7 +41,7 @@ export const AirportLists: React.FC = () => {
   return (
     <>
       <div className="row">
-        <div className="form-fluid">
+        <div className="col-sm-6">
           <select className="form-select" onChange={handleChange}>
             {airportLists.length > 0 &&
               airportLists.map((airportList) => (
@@ -51,21 +51,30 @@ export const AirportLists: React.FC = () => {
               ))}
           </select>
         </div>
-      </div>
-      <div className="row py-3">
-        <div className="d-flex">
-          <button className="btn btn-outline-danger me-atuo">
-            Delete List
-          </button>
-          <button className="btn btn-outline-primary ms-auto">New List</button>
+        <div className="col-sm-6">
+          <button className="btn btn-outline-danger">Delete List</button>
+          <button className="btn btn-outline-primary">New List</button>
         </div>
       </div>
-
-      <table className="table table-striped">
+      <table className="table table-hover">
+        <thead>
+          <tr>
+            <th>
+              <div>ICAO</div>
+            </th>
+            <th>
+              <div>Airport Name</div>
+            </th>
+            <th>
+              <div>City</div>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
         <tbody>
           {selectedAirportList &&
             selectedAirportList.airports.map((airport) => (
-              <AirportSearchTableRow airport={airport} />
+              <AirportListTableRow key={airport.ident} airport={airport} />
             ))}
         </tbody>
       </table>
