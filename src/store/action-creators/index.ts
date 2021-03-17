@@ -20,7 +20,7 @@ export const searchForAirports = (searchString: string) => {
           headers: {
             "Access-Control-Allow-Origin": "*",
             Authorization:
-              "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTEyYmRmOS1iZmQ1LTQyNDUtOGVlZC04NmI2ZDUxMjM0N2MiLCJlbWFpbCI6Im1hZ251c0B0ZXN0LnNlIiwibmJmIjoxNjE1MjI3NjI1LCJleHAiOjE2MTU4MzI0MjUsImlhdCI6MTYxNTIyNzYyNX0.5jpPnQOQJGRtX3v6I9jy2b_H0J8BAM6hH-JHbo2XU9TWaeGR0yG7e1J9r4v_idvJEtaa_PNTkt893B8C6TWsIQ",
+              "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTEyYmRmOS1iZmQ1LTQyNDUtOGVlZC04NmI2ZDUxMjM0N2MiLCJlbWFpbCI6Im1hZ251c0B0ZXN0LnNlIiwibmJmIjoxNjE2MDEzNDMxLCJleHAiOjE2MTY2MTgyMzEsImlhdCI6MTYxNjAxMzQzMX0.tqM4RFm3tIR_at4xj9GJXarQfQZLS_fyioHwaEinTAg39n0HjDoi0jWfBvbWAPzkqc4-EPKbbmG_U-wT-kLTyA",
           },
           params: {
             SearchTerm: searchString,
@@ -60,7 +60,7 @@ export const getAirportListsForUser = () => {
         {
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTEyYmRmOS1iZmQ1LTQyNDUtOGVlZC04NmI2ZDUxMjM0N2MiLCJlbWFpbCI6Im1hZ251c0B0ZXN0LnNlIiwibmJmIjoxNjE1MjI3NjI1LCJleHAiOjE2MTU4MzI0MjUsImlhdCI6MTYxNTIyNzYyNX0.5jpPnQOQJGRtX3v6I9jy2b_H0J8BAM6hH-JHbo2XU9TWaeGR0yG7e1J9r4v_idvJEtaa_PNTkt893B8C6TWsIQ",
+              "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTEyYmRmOS1iZmQ1LTQyNDUtOGVlZC04NmI2ZDUxMjM0N2MiLCJlbWFpbCI6Im1hZ251c0B0ZXN0LnNlIiwibmJmIjoxNjE2MDEzNDMxLCJleHAiOjE2MTY2MTgyMzEsImlhdCI6MTYxNjAxMzQzMX0.tqM4RFm3tIR_at4xj9GJXarQfQZLS_fyioHwaEinTAg39n0HjDoi0jWfBvbWAPzkqc4-EPKbbmG_U-wT-kLTyA",
           },
         }
       );
@@ -112,7 +112,7 @@ export const deleteAirportFromAirportList = (
           },
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTEyYmRmOS1iZmQ1LTQyNDUtOGVlZC04NmI2ZDUxMjM0N2MiLCJlbWFpbCI6Im1hZ251c0B0ZXN0LnNlIiwibmJmIjoxNjE1Mzc2MjQ1LCJleHAiOjE2MTU5ODEwNDUsImlhdCI6MTYxNTM3NjI0NX0.NB92S_uer7BTOWmedkHjQFhfBG-5Ip0AIcmGKclF1MpleyNwkiKHlGx3s3HrJ4EA7r8UVVFCW_1z-WJ1lTwNdg",
+              "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTEyYmRmOS1iZmQ1LTQyNDUtOGVlZC04NmI2ZDUxMjM0N2MiLCJlbWFpbCI6Im1hZ251c0B0ZXN0LnNlIiwibmJmIjoxNjE2MDEzNDMxLCJleHAiOjE2MTY2MTgyMzEsImlhdCI6MTYxNjAxMzQzMX0.tqM4RFm3tIR_at4xj9GJXarQfQZLS_fyioHwaEinTAg39n0HjDoi0jWfBvbWAPzkqc4-EPKbbmG_U-wT-kLTyA",
           },
         }
       );
@@ -155,7 +155,7 @@ export const addAirportToAirportList = (
         {
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTEyYmRmOS1iZmQ1LTQyNDUtOGVlZC04NmI2ZDUxMjM0N2MiLCJlbWFpbCI6Im1hZ251c0B0ZXN0LnNlIiwibmJmIjoxNjE1Mzc2MjQ1LCJleHAiOjE2MTU5ODEwNDUsImlhdCI6MTYxNTM3NjI0NX0.NB92S_uer7BTOWmedkHjQFhfBG-5Ip0AIcmGKclF1MpleyNwkiKHlGx3s3HrJ4EA7r8UVVFCW_1z-WJ1lTwNdg",
+              "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTEyYmRmOS1iZmQ1LTQyNDUtOGVlZC04NmI2ZDUxMjM0N2MiLCJlbWFpbCI6Im1hZ251c0B0ZXN0LnNlIiwibmJmIjoxNjE2MDEzNDMxLCJleHAiOjE2MTY2MTgyMzEsImlhdCI6MTYxNjAxMzQzMX0.tqM4RFm3tIR_at4xj9GJXarQfQZLS_fyioHwaEinTAg39n0HjDoi0jWfBvbWAPzkqc4-EPKbbmG_U-wT-kLTyA",
           },
         }
       );
