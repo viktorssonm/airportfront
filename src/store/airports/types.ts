@@ -43,3 +43,19 @@ export type SearchForAirportAction = {
 export type SelectAirportList = {
   list: AirportList;
 };
+
+export type User = {
+  displayName: String;
+  token: String;
+};
+
+export type UserLoginRequest = {
+  email: String;
+  password: String;
+};
+
+export type SignupUserInfo = {
+  email: String;
+  password: String;
+  displayName: String;
+};
