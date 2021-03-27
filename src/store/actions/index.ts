@@ -1,4 +1,4 @@
-import { Airport, AirportList } from "../airports/types";
+import { Airport, AirportList, User } from "../airports/types";
 
 export enum ActionType {
   SEARCH_FOR_AIRPORTS = "search_for_airport",
@@ -14,6 +14,13 @@ export enum ActionType {
   DELETE_AIRPORT_FROM_AIRPORTLIST = "delete_airport_from_airport_list",
   DELETE_AIRPORT_FROM_AIRPORTLIST_SUCCESS = "delete_airport_from_airport_list_success",
   DELETE_AIRPORT_FROM_AIRPORTLIST_ERROR = "delete_airport_from_airport_list_error",
+  LOGIN_REQUEST = "login_request",
+  LOGIN_SUCCESS = "login_success",
+  LOGIN_ERROR = "login_error",
+  LOGOUT = "logout",
+  SIGNUP_USER_REQUEST = "signup_user_request",
+  SIGNUP_USER_SUCCESS = "signup_user_success",
+  SIGNUP_USER_ERROR = "signup_user_error",
 }
 
 export interface SearchForAirportsAction {
@@ -73,6 +80,36 @@ export interface DeleteAirportFromAirportListError {
   type: ActionType.DELETE_AIRPORT_FROM_AIRPORTLIST_ERROR;
 }
 
+export interface LoginUserRequest {
+  type: ActionType.LOGIN_REQUEST;
+}
+
+export interface LoginUserRequestSucceded {
+  type: ActionType.LOGIN_SUCCESS;
+  payload: User;
+}
+
+export interface LoginUserRequestError {
+  type: ActionType.LOGIN_ERROR;
+  payload: string;
+}
+
+export interface LogoutUser {
+  type: ActionType.LOGOUT;
+}
+
+export interface SignupUserRequest {
+  type: ActionType.SIGNUP_USER_REQUEST;
+}
+
+export interface SignupUserRequestSuccess {
+  type: ActionType.SIGNUP_USER_SUCCESS;
+}
+
+export interface SignupUserError {
+  type: ActionType.SIGNUP_USER_ERROR;
+}
+
 export type Action =
   | SearchForAirportsAction
   | SearchForAirportsSucess
@@ -86,4 +123,11 @@ export type Action =
   | AddAirportToAirportListError
   | DeleteAirportFromAirportList
   | DeleteAirportFromAirportListSuccess
-  | DeleteAirportFromAirportListError;
+  | DeleteAirportFromAirportListError
+  | LoginUserRequest
+  | LoginUserRequestSucceded
+  | LoginUserRequestError
+  | LogoutUser
+  | SignupUserRequest
+  | SignupUserRequestSuccess
+  | SignupUserError;

@@ -5,24 +5,45 @@ import { NavBar } from "./NavBar/NavBar";
 import { Provider } from "react-redux";
 import { store } from "../store";
 import ShowWeather from "./Pages/ShowWeather/ShowWeather";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 import { SelectAirportsPage } from "./Pages/SelectAirports/SelectAirportsPage";
 import { LoginPage } from "./Pages/AuthPages/LoginPage";
+import { SignupPage } from "./Pages/AuthPages/SignupPage";
+import history from "../Services/history";
+import { PrivateRoute } from "./Pages/AuthPages/PrivateRoute";
+import { useEffect } from "react";
+import { User } from "../store/airports/types";
+import { ActionType } from "../store/actions";
 
 const App = () => {
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      const user: User = JSON.parse(userData);
+      store.dispatch({
+        type: ActionType.LOGIN_SUCCESS,
+        payload: user,
+      });
+    }
+  });
+
   return (
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
         <NavBar />
         <Switch>
           <Route path="/selectairports">
             <SelectAirportsPage />
           </Route>
-          <Route path="/showweather">
-            <ShowWeather />
-          </Route>
+          <PrivateRoute
+            path="/showweather"
+            component={ShowWeather}
+          ></PrivateRoute>
           <Route path="/login">
             <LoginPage />
+          </Route>
+          <Route path="/signup">
+            <SignupPage />
           </Route>
         </Switch>
       </Router>

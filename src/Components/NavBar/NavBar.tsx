@@ -1,6 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { logout } from "../../store/action-creators";
+import { useTypedSelector } from "../../store/hooks/reducer";
 
 export const NavBar = () => {
+  const dispatch = useDispatch();
+
+  const userLoggedIn = useTypedSelector((state) => {
+    return state.userReducer.user;
+  });
+
+  const handleLogout = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    dispatch(logout);
+  };
+
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark ml-auto">
       <div className="container-fluid">
@@ -44,7 +58,25 @@ export const NavBar = () => {
               </a>
             </li>
           </ul>
-          <span className="navbar-text">Sign In</span>
+          <span className="navbar-text">
+            {userLoggedIn && (
+              <div>
+                Logged in as: {userLoggedIn.displayName}{" "}
+                <button
+                  onClick={handleLogout}
+                  type="button"
+                  className="btn btn-secondary btn-sm mx-3"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+            {userLoggedIn == null && (
+              <div>
+                <Link to="/login">Login</Link>
+              </div>
+            )}
+          </span>
         </div>
       </div>
     </nav>
