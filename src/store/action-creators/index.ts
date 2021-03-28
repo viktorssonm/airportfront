@@ -134,6 +134,31 @@ export const selectAirportList = (airportList: AirportList) => {
   };
 };
 
+export const addAirportList = (name: String) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.ADD_AIRPORT_LIST });
+    try {
+      const { data, status } = await airportService.createAirportList(name);
+      if (status === 200) {
+        dispatch({
+          type: ActionType.ADD_AIRPORT_LIST_SUCCESS,
+          payload: data,
+        });
+      } else {
+        dispatch({
+          type: ActionType.ADD_AIRPORT_LIST_ERROR,
+          payload: data,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: ActionType.ADD_AIRPORT_LIST_ERROR,
+        payload: "Error adding airport list",
+      });
+    }
+  };
+};
+
 // Delete airport from list
 export const deleteAirportFromAirportList = (
   airportList: AirportList,

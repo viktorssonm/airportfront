@@ -4,6 +4,9 @@ export enum ActionType {
   SEARCH_FOR_AIRPORTS = "search_for_airport",
   SEARCH_FOR_AIRPORTS_SUCCESS = "search_for_airports_success",
   SEARCH_FOR_AIRPORTS_ERROR = "search_for_airports_error",
+  ADD_AIRPORT_LIST = "add_airport_list",
+  ADD_AIRPORT_LIST_SUCCESS = "add_airport_list_success",
+  ADD_AIRPORT_LIST_ERROR = "add_airport_list_error",
   GET_AIRPORT_LISTS = "get_airport_lists",
   GET_AIRPORT_LISTS_SUCCESS = "get_airport_lists_success",
   GET_AIRPORT_LISTS_ERROR = "get_airport_lists_error",
@@ -110,6 +113,20 @@ export interface SignupUserError {
   type: ActionType.SIGNUP_USER_ERROR;
 }
 
+export interface AddAirportList {
+  type: ActionType.ADD_AIRPORT_LIST;
+}
+
+export interface AddAirportListSuccess {
+  type: ActionType.ADD_AIRPORT_LIST_SUCCESS;
+  payload: AirportList;
+}
+
+export interface AddAirportListError {
+  type: ActionType.ADD_AIRPORT_LIST_ERROR;
+  payload: String;
+}
+
 export type Action =
   | SearchForAirportsAction
   | SearchForAirportsSucess
@@ -118,6 +135,9 @@ export type Action =
   | GetAllAirportListsSuccess
   | GetAllAirportListsError
   | SelectAirportList
+  | AddAirportList
+  | AddAirportListSuccess
+  | AddAirportListError
   | AddAirportToAirportList
   | AddAirportToAirportListSuccess
   | AddAirportToAirportListError
