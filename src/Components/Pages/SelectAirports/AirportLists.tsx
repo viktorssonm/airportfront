@@ -25,7 +25,7 @@ export const AirportLists: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Get all lists for current user
+    // Get all lists for current user in inital page load.
     dispatch(getAirportListsForUser());
   }, [dispatch]);
 
@@ -59,26 +59,26 @@ export const AirportLists: React.FC = () => {
       {!listOpen && (
         <div>
           <div className="row">
-            <div className="col-sm-6">
-              <select className="form-select" onChange={handleChange}>
-                {airportLists.length > 0 &&
-                  airportLists.map((airportList) => (
-                    <option key={airportList.id} value={airportList.id}>
-                      {airportList.listName}
-                    </option>
-                  ))}
-              </select>
-            </div>
-            <div className="col-sm-6">
-              <button className="btn btn-outline-danger">Delete List</button>
-              <button
-                className="btn btn-outline-primary"
-                onClick={() => {
-                  toggleListOpen(true);
-                }}
-              >
-                New List
-              </button>
+            <div className="col-sm">
+              <div className="input-group">
+                <select className="form-select" onChange={handleChange}>
+                  {airportLists.length > 0 &&
+                    airportLists.map((airportList) => (
+                      <option key={airportList.id} value={airportList.id}>
+                        {airportList.listName}
+                      </option>
+                    ))}
+                </select>
+                <button className="btn btn-outline-danger">Delete List</button>
+                <button
+                  className="btn btn-outline-primary"
+                  onClick={() => {
+                    toggleListOpen(true);
+                  }}
+                >
+                  New List
+                </button>
+              </div>
             </div>
           </div>
           <table className="table table-hover">
@@ -109,7 +109,7 @@ export const AirportLists: React.FC = () => {
         <div className="row">
           <div className="col-sm">
             <form onSubmit={handleNewListSubmit}>
-              <div className="input-group mt-2">
+              <div className="input-group">
                 <input
                   value={newListName}
                   onChange={handleListNameChange}
@@ -118,16 +118,15 @@ export const AirportLists: React.FC = () => {
                   id="listName"
                   placeholder="Name for new list"
                 ></input>
-
-                <button className="btn btn-outline-secondary">Save List</button>
                 <button
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-danger"
                   onClick={() => {
                     toggleListOpen(false);
                   }}
                 >
                   Cancel
                 </button>
+                <button className="btn btn-outline-primary">Save List</button>
               </div>
             </form>
           </div>
