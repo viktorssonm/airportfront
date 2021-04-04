@@ -122,6 +122,7 @@ export const getAirportListsForUser = () => {
       dispatch({
         type: ActionType.GET_AIRPORT_LISTS_ERROR,
       });
+      history.push("/login");
     }
   };
 };
