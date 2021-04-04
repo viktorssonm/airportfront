@@ -83,6 +83,20 @@ class AirportService {
     return response;
   }
 
+  async getWeatherForAirportList(airportList: AirportList) {
+    const user = this.getUser();
+    const response: AxiosResponse = await axios.get(
+      API_URL + "airportlists/weather?Id=" + airportList.id,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          Authorization: "Bearer " + user.token,
+        },
+      }
+    );
+    return response;
+  }
+
   // Add airport to airport list
   async addAirportToList(airportToAdd: Airport, airportList: AirportList) {
     const user = this.getUser();

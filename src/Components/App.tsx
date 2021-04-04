@@ -32,13 +32,8 @@ const App = () => {
       <Router history={history}>
         <NavBar />
         <Switch>
-          <Route path="/selectairports">
-            <SelectAirportsPage />
-          </Route>
-          <PrivateRoute
-            path="/showweather"
-            component={ShowWeather}
-          ></PrivateRoute>
+          <PrivateRoute path="/selectairports" component={SelectAirportsPage} />
+          <PrivateRoute path="/showweather" component={ShowWeather} />
           <Route path="/login">
             <LoginPage />
           </Route>
