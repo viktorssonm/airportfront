@@ -24,21 +24,24 @@ export const SearchAirports: React.FC = () => {
     <div>
       <form onSubmit={submitForm} className="form-fluid">
         <div className="row">
-          <div className="col-8">
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Search for Airport"
-              aria-label=".form-control"
-              id="searchTerm"
-              value={searchterm}
-              onChange={searchTermChanged}
-            ></input>
-          </div>
-          <div className="col-auto">
-            <button type="submit" className="btn btn-primary">
-              Search
-            </button>
+          <div className="col-sm">
+            <div className="input-group">
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Search for Airport"
+                aria-label=".form-control"
+                id="searchTerm"
+                value={searchterm}
+                onChange={searchTermChanged}
+              ></input>
+
+              <div className="col-auto">
+                <button type="submit" className="btn btn-primary">
+                  Search
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </form>

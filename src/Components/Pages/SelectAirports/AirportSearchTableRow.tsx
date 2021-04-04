@@ -20,7 +20,6 @@ export const AirportSearchTableRow: React.FC<Props> = ({ airport }) => {
   const handleClick = () => {
     if (selectedList == null) return;
 
-    // Continue here, fix redux after airport list return OK
     dispatch(addAirportToAirportList(airport, selectedList));
   };
 

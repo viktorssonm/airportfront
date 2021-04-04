@@ -46,6 +46,21 @@ class AirportService {
     return response;
   }
 
+  // Create new airportLIst
+  async createAirportList(name: String) {
+    const user = this.getUser();
+
+    const response: AxiosResponse = await axios.post(
+      API_URL + "airportlists/new",
+      {
+        ListName: name,
+      },
+      { headers: { Authorization: "Bearer " + user.token } }
+    );
+
+    return response;
+  }
+
   // Delete airport from airport list
   async deleteAirportFromList(
     airportList: AirportList,

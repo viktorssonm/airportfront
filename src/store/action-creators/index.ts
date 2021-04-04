@@ -122,6 +122,7 @@ export const getAirportListsForUser = () => {
       dispatch({
         type: ActionType.GET_AIRPORT_LISTS_ERROR,
       });
+      history.push("/login");
     }
   };
 };
@@ -131,6 +132,31 @@ export const selectAirportList = (airportList: AirportList) => {
   return {
     type: ActionType.SELECT_AIRPORT_LIST,
     payload: airportList,
+  };
+};
+
+export const addAirportList = (name: String) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.ADD_AIRPORT_LIST });
+    try {
+      const { data, status } = await airportService.createAirportList(name);
+      if (status === 200) {
+        dispatch({
+          type: ActionType.ADD_AIRPORT_LIST_SUCCESS,
+          payload: data,
+        });
+      } else {
+        dispatch({
+          type: ActionType.ADD_AIRPORT_LIST_ERROR,
+          payload: data,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: ActionType.ADD_AIRPORT_LIST_ERROR,
+        payload: "Error adding airport list",
+      });
+    }
   };
 };
 
