@@ -54,7 +54,7 @@ export const loginUser = (credentials: UserLoginRequest) => {
     } catch (e) {
       dispatch({
         type: ActionType.LOGIN_ERROR,
-        payload: e.response.statusText,
+        payload: e,
       });
     }
   };

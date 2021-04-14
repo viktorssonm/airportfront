@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { SignupUserInfo, UserLoginRequest } from "../store/airports/types";
 
-const API_URL = "https://localhost:5001/api/authenticate";
+const API_URL = "http://104.236.90.15/api/authenticate";
 
 class AuthService {
   // Register new user
