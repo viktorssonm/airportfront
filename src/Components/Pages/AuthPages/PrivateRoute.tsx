@@ -1,16 +1,19 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { useTypedSelector } from "../../../store/hooks/reducer";
 
 // Component to check if user is logged in for private routes.
 export const PrivateRoute: React.ComponentType<any> = ({
   component: Component,
   ...rest
 }) => {
-  // Check user state in redux store
-  const isAuthed = useTypedSelector((props) => {
-    return props.userReducer.user;
-  });
+  // Check user state in localstorage
+  const isAuthed = () => {
+    const user = localStorage.getItem("user");
+    return user;
+  };
+  // const isAuthed = useTypedSelector((props) => {
+  //   return props.userReducer.user;
+  // });
 
   // Function to check if user is set or not.
   const isUserAuthed = (): boolean => {

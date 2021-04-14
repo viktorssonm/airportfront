@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { Airport, AirportList, User } from "../store/airports/types";
 import history from "./history";
 
-const API_URL = "https://localhost:5001/api/";
+const API_URL = "http://104.236.90.15/api/";
 
 class AirportService {
   // Get userinfo from local storage and return user
@@ -83,11 +83,25 @@ class AirportService {
     return response;
   }
 
+  async getWeatherForAirportList(airportList: AirportList) {
+    const user = this.getUser();
+    const response: AxiosResponse = await axios.get(
+      API_URL + "airportlists/weather?Id=" + airportList.id,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          Authorization: "Bearer " + user.token,
+        },
+      }
+    );
+    return response;
+  }
+
   // Add airport to airport list
   async addAirportToList(airportToAdd: Airport, airportList: AirportList) {
     const user = this.getUser();
     const response: AxiosResponse = await axios.post(
-      "https://localhost:5001/api/airportlists/addairport",
+      "http://104.236.90.15/api/airportlists/addairport",
       {
         Id: airportList.id,
         AirportIdent: airportToAdd.ident,

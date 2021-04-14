@@ -27,6 +27,13 @@ export interface AirportList {
   changedAt: Date;
 }
 
+export interface WeatherReport {
+  id: string;
+  createdAt: Date;
+  airportIdent: string;
+  raw_Metar: string;
+}
+
 export interface SearchForAirport {
   SearchTerm: String;
 }

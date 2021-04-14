@@ -11,6 +11,7 @@ import {
   UserLoginRequest,
 } from "../airports/types";
 import airportService from "../../Services/airport.service";
+import { AirportLists } from "../../Components/Pages/SelectAirports/AirportLists";
 
 // Action creator for signup
 export const signupUser = (userData: SignupUserInfo) => {
@@ -53,7 +54,7 @@ export const loginUser = (credentials: UserLoginRequest) => {
     } catch (e) {
       dispatch({
         type: ActionType.LOGIN_ERROR,
-        payload: e.response.statusText,
+        payload: e,
       });
     }
   };
@@ -189,6 +190,37 @@ export const deleteAirportFromAirportList = (
       console.log(e);
       dispatch({
         type: ActionType.DELETE_AIRPORT_FROM_AIRPORTLIST_ERROR,
+      });
+    }
+  };
+};
+
+export const getWeatherReportsForList = (airportList: AirportList) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.GET_WEATHER_FOR_LIST,
+    });
+
+    try {
+      const { data, status } = await airportService.getWeatherForAirportList(
+        airportList
+      );
+
+      if (status === 200) {
+        dispatch({
+          type: ActionType.GET_WEATHER_FOR_LIST_SUCCESS,
+          payload: data,
+        });
+      } else {
+        dispatch({
+          type: ActionType.GET_WEATHER_FOR_LIST_ERROR,
+          payload: data,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: ActionType.GET_WEATHER_FOR_LIST_ERROR,
+        payload: "Error",
       });
     }
   };

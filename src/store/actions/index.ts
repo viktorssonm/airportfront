@@ -1,4 +1,4 @@
-import { Airport, AirportList, User } from "../airports/types";
+import { Airport, AirportList, User, WeatherReport } from "../airports/types";
 
 export enum ActionType {
   SEARCH_FOR_AIRPORTS = "search_for_airport",
@@ -24,6 +24,9 @@ export enum ActionType {
   SIGNUP_USER_REQUEST = "signup_user_request",
   SIGNUP_USER_SUCCESS = "signup_user_success",
   SIGNUP_USER_ERROR = "signup_user_error",
+  GET_WEATHER_FOR_LIST = "get_weather_for_list",
+  GET_WEATHER_FOR_LIST_SUCCESS = "get_weather_for_list_success",
+  GET_WEATHER_FOR_LIST_ERROR = "get_weather_for_list_error",
 }
 
 export interface SearchForAirportsAction {
@@ -127,6 +130,20 @@ export interface AddAirportListError {
   payload: String;
 }
 
+export interface GetWeatherForList {
+  type: ActionType.GET_WEATHER_FOR_LIST;
+}
+
+export interface GetWeatherForListSuccess {
+  type: ActionType.GET_WEATHER_FOR_LIST_SUCCESS;
+  payload: WeatherReport[];
+}
+
+export interface GetWeatherForListError {
+  type: ActionType.GET_WEATHER_FOR_LIST_ERROR;
+  payload: string;
+}
+
 export type Action =
   | SearchForAirportsAction
   | SearchForAirportsSucess
@@ -150,4 +167,7 @@ export type Action =
   | LogoutUser
   | SignupUserRequest
   | SignupUserRequestSuccess
-  | SignupUserError;
+  | SignupUserError
+  | GetWeatherForList
+  | GetWeatherForListSuccess
+  | GetWeatherForListError;
