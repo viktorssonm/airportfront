@@ -11,7 +11,6 @@ import {
   UserLoginRequest,
 } from "../airports/types";
 import airportService from "../../Services/airport.service";
-import { AirportLists } from "../../Components/Pages/SelectAirports/AirportLists";
 
 // Action creator for signup
 export const signupUser = (userData: SignupUserInfo) => {

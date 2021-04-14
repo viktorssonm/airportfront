@@ -2,7 +2,8 @@ import axios, { AxiosResponse } from "axios";
 import { Airport, AirportList, User } from "../store/airports/types";
 import history from "./history";
 
-const API_URL = "http://104.236.90.15/api/";
+const { REACT_APP_BACKEND_URL } = process.env;
+const API_URL = REACT_APP_BACKEND_URL + "/api/";
 
 class AirportService {
   // Get userinfo from local storage and return user
@@ -101,7 +102,7 @@ class AirportService {
   async addAirportToList(airportToAdd: Airport, airportList: AirportList) {
     const user = this.getUser();
     const response: AxiosResponse = await axios.post(
-      "http://104.236.90.15/api/airportlists/addairport",
+      API_URL + "airportlists/addairport",
       {
         Id: airportList.id,
         AirportIdent: airportToAdd.ident,

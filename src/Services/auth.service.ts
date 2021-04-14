@@ -1,7 +1,8 @@
 import axios, { AxiosResponse } from "axios";
 import { SignupUserInfo, UserLoginRequest } from "../store/airports/types";
 
-const API_URL = "http://104.236.90.15/api/authenticate";
+const { REACT_APP_BACKEND_URL } = process.env;
+const API_URL = REACT_APP_BACKEND_URL + "/api/authenticate";
 
 class AuthService {
   // Register new user

@@ -11,6 +11,8 @@ See this repo:
 
 #### Typescript
 
+This React application is written with Typescript.
+
 #### CSS
 
 Bootstrap 5.0 is used for building the user interface.
@@ -19,7 +21,7 @@ Bootstrap 5.0 is used for building the user interface.
 
 React Router is used for handling navigation.
 
-#### Data
+#### Data / Redux
 
 Redux is used for handling the state of the application
 
