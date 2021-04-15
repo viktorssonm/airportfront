@@ -1,6 +1,6 @@
 # Open AIS Frontend
 
-This is a hobby project for testing development with ReactJS and Typescript.
+This is a hobby project for testing development with React, Redux and Typescript.
 
 ## How it's built
 
